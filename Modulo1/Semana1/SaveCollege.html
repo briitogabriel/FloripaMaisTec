@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <p>Check console logs for exercises.</p>
+</body>
+<script>
+  
+  // ----------------------- EX 1
+  const students = [
+    {
+      name: 'Gabriel',
+      height: 1.80,
+      age: 28,
+      gender: 'Male',
+      class: 'Trindade'
+    },
+    {
+      name: 'Fulano',
+      height: 1.75,
+      age: 23,
+      gender: 'Male',
+      class: 'Campeche'
+    },
+    {
+      name: 'Glauberto',
+      height: 1.60,
+      age: 34,
+      gender: 'Male',
+      class: 'Barra'
+    },
+    {
+      name: 'Jucilene',
+      height: 1.74,
+      age: 38,
+      gender: 'Female',
+      class: 'Centro'
+    },
+    {
+      name: 'Lala',
+      height: 1.45,
+      age: 18,
+      gender: 'Female',
+      class: 'Córrego Grande'
+    }
+  ]
+  console.log('Exercício 1: array de alunos')
+  console.log(students)
+
+  // ----------------------- EX 2
+  const students2 = [
+    {
+      name: 'Gabriel',
+      height: 1.80,
+      age: 28,
+      gender: 'Male',
+      classRoom: 'Trindade',
+      mathGrade: 10
+    },
+    {
+      name: 'Fulano',
+      height: 1.75,
+      age: 23,
+      gender: 'Male',
+      classRoom: 'Campeche',
+      mathGrade: 7
+    },
+    {
+      name: 'Glauberto',
+      height: 1.60,
+      age: 34,
+      gender: 'Male',
+      classRoom: 'Barra',
+      mathGrade: 6
+    },
+    {
+      name: 'Jucilene',
+      height: 1.74,
+      age: 38,
+      gender: 'Female',
+      classRoom: 'Centro',
+      mathGrade: 8
+    },
+    {
+      name: 'Lala',
+      height: 1.45,
+      age: 18,
+      gender: 'Female',
+      classRoom: 'Córrego Grande',
+      mathGrade: 5
+    }
+  ];
+
+  let sumOfGrades = 0;
+  let totalStudents = students2.length;
+
+  students2.forEach(student => {
+    sumOfGrades = sumOfGrades + student.mathGrade
+    // totalStudents = totalStudents + 1
+  });
+  
+  console.log('Exercício 2: média das notas')
+  console.log(students2)
+  console.log(sumOfGrades / totalStudents)
+
+  // ----------------------- EX 3
+  const students3 = [];
+  const approvedGrade = 7;
+
+  students2.forEach(student => {
+    let isApproved = student.mathGrade >= approvedGrade ? 'Yes' : 'No';
+
+    students3.push({
+      name: student.name,
+      mathGrade: student.mathGrade,
+      approved: isApproved
+    })
+  })
+
+  console.log(`Exercício 3: aprovados (média >= ${approvedGrade})`)
+  console.log(students3)
+  
+  // ----------------------- EX 4
+  console.log('Exercício 4: publicar no github')
+</script>
+</html>
+
+<!-- Exercícios da Semana
+
+COMO REALIZAR OS EXERCÍCIOS
+Recomenda-se criar uma pasta no computador para armazenar as respostas dos exercícios semanais. No primeiro módulo do curso, os alunos irão receber os enunciados através de um documento texto, após (segundo módulo), os exercícios serão disponibilizados semanalmente em um quadro do Trello, onde os alunos irão movimentar os cartões de exercícios/tarefas, seguindo a metodologia Kanban, e armazenar as respostas em um repositório no GitHub.
+
+
+[M1S1] Ex 1 - [App SaveCollege] Dados dos alunos
+Uma escola precisa armazenar os dados dos alunos e realizar várias operações. Primeiro crie uma lista que guarda 5 objetos chamados aluno, e adicione 5 propriedades contendo informações pessoais como “nome, altura, idade, sexo e sala”. Por fim, imprima os alunos no terminal.
+
+[M1S1] Ex 2 - [App SaveCollege] Média dos alunos
+A escola precisa saber a média de nota dos alunos de uma determinada série. Para isso precisamos de sua ajuda. Crie uma propriedade dentro de cada objeto aluno chamado Matemática com um valor fictício e utilize operadores aritméticos para obter a média dos alunos e imprimir no terminal.
+
+[M1S1] Ex 3 - [App SaveCollege] Alunos aprovados
+Imprima o nome do aluno e o valor aprovado ou reprovado em seguida utilizando operadores condicionais. 
+
+[M1S1] Ex 4 -  [App SaveCollege] Salvar no Github
+Salve no git seu projeto App SaveCollege e posteriormente em um repositório github/gitlab. -->
