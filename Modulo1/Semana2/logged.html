@@ -5,18 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./styles.css" />
-  <title>LoginStart</title>
+  <title>Logged In</title>
 </head>
 
 <body>
-  <form class="container" id="formLogin">
+  <form class="container" id="formLogout">
     <h1>Login Start App</h1>
-    <p>Insert your login credentials:</p>
     <div class="formInput">
-      <input type="text" placeholder="Username" id="username">
-      <input type="password" placeholder="Password" id="password">
+      <p id="loggedMsg"></p>
     </div>
-    <button class="btn">Login</button>
+    <button onclick={logout()} class="btn2">Logout</button>
   </form>
 </body>
 
