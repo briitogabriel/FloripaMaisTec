@@ -11,10 +11,16 @@
 <body>
   <form class="container" id="formLogout">
     <h1>Login Start App</h1>
-    <div class="formInput">
+    <div id="loggedArea">
       <p id="loggedMsg"></p>
+      <p id="email"></p>
+      <img src="" id="profileImage">
     </div>
     <button onclick={logout()} class="btn2">Logout</button>
+    <button onclick={changeName()} class="btn">Change Login Name</button>
+    <button onclick={changePassword()} class="btn">Change Password</button>
+    <button onclick={changeEmail()} class="btn">Change Email</button>
+    <button onclick={changeImage()} class="btn">Change Profile Image URL</button>
   </form>
 </body>
 
