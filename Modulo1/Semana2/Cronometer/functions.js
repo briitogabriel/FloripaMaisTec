@@ -1,28 +1,33 @@
-let count = 10;
 const cronometer = document.getElementById('countdown')
 
 window.onload = () => {
-  cronometer.innerText = `${count} segundo(s)`;
+  let count = null;
+  resetCounter();
+  // cronometer.innerText = 'Click to start counting';
 }
 
+var interval = null;
+
 const setCountdown = () => {
-  cronometer.innerText = `${count} segundo(s)`;
+  cronometer.innerText = `${count} second${count == 1 ? '' : 's'} left`;
 
   if(count <= 0) {
-    clearInterval(startCounter)   //INFINTE LOOPING!!
+    clearInterval(interval);
+    interval = 0;
     cronometer.innerText = 'Your time is over. Try again!';
-    console.log(count);
   } else {
     count = count-1;
   }
 }
 
 const startCounter = () => {
-  setInterval(setCountdown, 1000)
-  count = count-1;
+  setCountdown();
+  interval = setInterval(setCountdown, 1000);
 }
-
 
 const resetCounter = () => {
   count = 10;
+  cronometer.innerText = 'Click to start counting';
+  clearInterval(interval);
+  interval = 0;
 }
