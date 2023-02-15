@@ -56,7 +56,7 @@ if (formLogout) {
 
 const logout = () => {
   let DBlogin = JSON.parse(localStorage.getItem('DBstorage'))
-  location.href = './loginStart.html'
+  location.href = './index.html'
   alert(`User "${DBlogin.username}" disconnected.`)
 }
 
