@@ -22,11 +22,16 @@ document.querySelector('#app').innerHTML = `
     <h1>To Do List App</h1>
     <ul id="toDos"></ul>
     <button id="addNew" onClick={handleAddNew()}>Add New Item</button>
+    <input id="searchInput" class="search" type="text" placeholder="Search for a To Do Task" />
+    <div id="searchResult"></div>
   </div>
 `
 
 const toDoList = [];
 const toDos = document.getElementById('toDos');
+
+const searchInput = document.getElementById('searchInput');
+const searchResult = document.getElementById('searchResult');
 
 window.handleAddNew = () => {
 
@@ -92,3 +97,15 @@ window.handleDone = (btn_id) => {
     <p>${editItem.checked ? `<s>${editItem.item}</s>` : editItem.item}</p>
     `;
 }
+
+searchInput.addEventListener('input', (e) => {
+  let filteredToDoArray = toDoList.filter(toDoItem => (toDoItem.item.toLowerCase().includes(e.target.value.toLowerCase())));
+
+  let itemsFound = '';
+
+  for (const x of filteredToDoArray.values()) {
+    itemsFound = itemsFound + `<b><p>Item Found:</b> ${x.item} | <b>Status:</b> ${x.checked ? 'Done' : 'Undone'}</p></br>`
+  }
+
+  searchResult.innerHTML = itemsFound;
+})
