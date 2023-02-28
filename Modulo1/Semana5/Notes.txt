@@ -1,0 +1,4 @@
+Aula 01 | 27/02/2023
+
+- INICIALIZAR UM PROJETO NODEJS:
+npm init -y

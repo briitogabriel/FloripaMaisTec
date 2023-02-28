@@ -1,0 +1,1 @@
+// const path = require('path')      //OUTRA MANEIRA DE IMPORTAR BIBLIOTECAS NODE: import path from 'path'
