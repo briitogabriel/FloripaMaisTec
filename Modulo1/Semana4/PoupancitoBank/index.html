@@ -11,9 +11,21 @@
 <body>
   <div class="container">
     <h1>Poupancito Bank App</h1>
-    <button class="btn" onclick={handleDeposit()}>Make a Deposit</button>
-    <button class="btn2" onclick={handleWithdraw()}>Cash Withdraw</button>
-    <h2 id="currentBalance"></h2>
+    <div class="board">
+      <div class="account">
+        <h3>Current Account</h3>
+        <button class="btn" onclick={handleDeposit()}>Make a Deposit</button>
+        <button class="btn" onclick={handleWithdraw()}>Cash Withdraw</button>
+        <h2 id="currentBalance"></h2>
+      </div>
+      <div class="account">
+        <h3>Savings Account</h3>
+        <button class="btn" onclick={handleSavingsDeposit()}>Make a Deposit</button>
+        <button class="btn" onclick={handleSavingsWithdraw()}>Cash Withdraw</button>
+        <button class="btn2" onclick={handleInterest()}>Calculate Savings Interest (rate 0,7%)</button>
+        <h2 id="currentSavingsBalance"></h2>
+      </div>
+    </div>
   </div>
 </body>
 
