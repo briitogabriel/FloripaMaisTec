@@ -121,10 +121,8 @@ const startShopping = () => {
       const qtToBuy = Number(prompt(`How many '${productFound.name}s' ${register.client} wants to buy?`))
       register.addItem(productFound, qtToBuy)
     }
-    option = confirm(`Does ${register.client} wants to add new products?`)
+    option = confirm(`Added to Cart!\nDoes ${register.client} wants to add new products?`)
   } while (option !== false);
-
-  alert('Added to Cart.')
 
   // productList.forEach((item, index) => {
   //   let li = document.createElement('li');
@@ -162,11 +160,11 @@ const handleClose = () => {
       `<li>
         Product: ${item.product.name} -> R$${parseFloat(item.product.price).toFixed(2)} x ${item.qtd} = R$${parseFloat(item.product.price * item.qtd).toFixed(2)}
       </li>`
-    ))}
+    )).join('')}
 
     
     <li>
-      <b>Total shopping: R$${parseFloat(totalShop).toFixed(2)}</b>
+      <b>Total Cost: R$${parseFloat(totalShop).toFixed(2)}</b>
     </li>
 
     <li>
