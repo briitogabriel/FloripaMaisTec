@@ -58,18 +58,20 @@ currentBalance.onload = setCurrentBalance();
 
 
 class Savings extends Account {
-  constructor(balance, password, interest) {
+  #interest;
+
+  constructor(balance, password) {
     super(balance, password);
-    this.interest = interest;
   }
 
   updateInterest() {
-    this.balance = this.balance * this.interest
+    this.#interest = (1 + 0.7/100).toFixed(3);  //determinates interest rate = 0.7%
+    this.balance = this.balance * this.#interest
     return this.balance
   }
 }
 
-const savingsAccount = new Savings(0, 'SECRET2', (1 + 0.7/100).toFixed(3));  //determinates interest rate = 0.7%
+const savingsAccount = new Savings(0, 'SECRET2');
 
 const handleSavingsDeposit = () => {
   let cashDeposit = prompt('Hello! How much would you like to deposit?')
