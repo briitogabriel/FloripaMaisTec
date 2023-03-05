@@ -1,5 +1,5 @@
 
-// POUPANCITO BANK V1
+// POUPANCITO BANK V1 -> Classe "Account"
 
 class Account {
   balance;
@@ -54,7 +54,7 @@ const setCurrentBalance = () => {
 currentBalance.onload = setCurrentBalance();
 
 
-// POUPANCITO BANK V2
+// POUPANCITO BANK V2 - Classe "Savings" (herança)
 
 
 class Savings extends Account {
@@ -71,13 +71,60 @@ class Savings extends Account {
   }
 }
 
-const savingsAccount = new Savings(0, 'SECRET2');
+// const savingsAccount = new Savings(0, 'SECRET2');
+
+// const handleSavingsDeposit = () => {
+//   let cashDeposit = prompt('Hello! How much would you like to deposit?')
+//   let password = prompt('Please inform you password:')
+
+//   savingsAccount.deposite(cashDeposit, password)
+//   setSavingsBalance();
+// }
+
+// const handleSavingsWithdraw = () => {
+//   let cashWithdraw = prompt('Hello! How much would you like to withdraw?')
+//   let password = prompt('Please inform you password:')
+  
+//   savingsAccount.withdraw(cashWithdraw, password)
+//   setSavingsBalance();
+// }
+
+// const savingsBalance = document.getElementById('currentSavingsBalance')
+// const setSavingsBalance = () => {
+//   savingsBalance.innerHTML = `R$${parseFloat(savingsAccount.balance).toFixed(2)}`
+// }
+// savingsBalance.onload = setSavingsBalance();
+
+// const handleInterest = () => {
+//   savingsAccount.updateInterest();
+//   setSavingsBalance();
+// }
+
+
+// POUPANCITO BANK V3 - Classe "Savings com novo rendimento" (polimorfismo)
+
+
+class SavingsV3 extends Savings {
+  #interest;
+
+  constructor(balance, password) {
+    super(balance, password);
+  }
+
+  updateInterest() {
+    this.#interest = (1 + 1.2/100).toFixed(3);  //determinates interest rate = 1.2%
+    this.balance = this.balance * this.#interest
+    return this.balance
+  }
+}
+
+const savingsAccountV3 = new SavingsV3(0, 'SECRET3');
 
 const handleSavingsDeposit = () => {
   let cashDeposit = prompt('Hello! How much would you like to deposit?')
   let password = prompt('Please inform you password:')
 
-  savingsAccount.deposite(cashDeposit, password)
+  savingsAccountV3.deposite(cashDeposit, password)
   setSavingsBalance();
 }
 
@@ -85,17 +132,17 @@ const handleSavingsWithdraw = () => {
   let cashWithdraw = prompt('Hello! How much would you like to withdraw?')
   let password = prompt('Please inform you password:')
   
-  savingsAccount.withdraw(cashWithdraw, password)
+  savingsAccountV3.withdraw(cashWithdraw, password)
   setSavingsBalance();
 }
 
 const savingsBalance = document.getElementById('currentSavingsBalance')
 const setSavingsBalance = () => {
-  savingsBalance.innerHTML = `R$${parseFloat(savingsAccount.balance).toFixed(2)}`
+  savingsBalance.innerHTML = `R$${parseFloat(savingsAccountV3.balance).toFixed(2)}`
 }
 savingsBalance.onload = setSavingsBalance();
 
 const handleInterest = () => {
-  savingsAccount.updateInterest();
+  savingsAccountV3.updateInterest();
   setSavingsBalance();
 }
