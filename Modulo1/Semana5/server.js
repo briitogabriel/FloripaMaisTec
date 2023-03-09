@@ -97,11 +97,33 @@ do {
       const under18 = [];
       const equalAbove18 = [];
 
+      console.log(`Original user list: ${userList04}`);
+
       userList04.map(user => {
         user.idade < 18 ? under18.push(JSON.stringify(user)) : equalAbove18.push(JSON.stringify(user))
       });
 
       console.log(`Users with age under 18 years: ${under18} \n Users with age equal or above 18 years: ${equalAbove18}`)
+      break;
+
+      case 5:
+      console.log(`\n------------- Exercise 05 - CHECKING VOWELS --------------`);
+      // Check and count if there are vowels in a String input
+
+      const stringInput = readline.question(`Type a sentence to be checked:\n`);
+      if (isNaN(parseFloat(stringInput))) {
+
+        let vowelsCount = 0;
+        const vowelsList = ['a', 'e', 'i', 'o', 'u']
+        
+        for (let i of stringInput) {
+          if (vowelsList.includes(i)) { vowelsCount = vowelsCount + 1 }
+        }
+
+        console.log(`The total amount of vowels in the input is = ${vowelsCount}.`)   
+      } else {
+        console.log(`${stringInput} is not a valid String.`)
+      }         
       break;
 
     default: console.log('Exercise not found.')
