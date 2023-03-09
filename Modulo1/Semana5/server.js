@@ -2,6 +2,8 @@
 
 console.log(`\n------------- Exercise 01 - DELETE DUPLICATED --------------`);
 
+// Find duplicated registers, remove from original list and print the duplicated found + new list (distinct)
+
 const list = ['Pedro', 'José', 'Aderbal', 'Danilo', 'Luisa', 'Vitoria', 'Luis', 'Danilo', 'José'];
 const distinctList = [];
 let duplicate = '';
@@ -34,3 +36,38 @@ for (let i = 0; i < users.length; i++) {
 console.log(`Users Array: [${users}]`);
 console.log(`Fruits Array: [${fruits}]`);
 console.log(`Ordered combined Array: [${orderedArray}]`);
+
+
+
+console.log(`\n------------- Exercise 03 - ADD NEW USERS --------------`);
+
+const names03 = ['Pedro', 'José', 'Aderbal', 'Danilo', 'Luisa', 'Vitoria'];
+let addNew = true;
+let newName = '';
+
+// Get new names in prompt, add to the original array validating if it already exists and if it's String
+
+const readline = require('readline-sync');
+
+console.log(`Original Users list: [${names03}]`);
+
+do {
+  newName = readline.question(`Inform a new user name to Add into the Users list:\n`)
+
+  if (isNaN(parseFloat(newName))) {
+    
+    if (names03.includes(newName)) {
+      console.log(`${newName} is already on the Users list. Please inform a valid user name.`);
+      continue
+
+    } else {
+      names03.push(newName);
+      console.log(`New Users list: [${names03}]`);
+    
+      question = readline.question(`Do you want to add new names to the list? ('N' to quit or press 'ENTER' to continue)\n`)
+      question.toUpperCase() === 'N' ? addNew = false : addNew = true
+      continue
+    }
+  } else { console.log(`${newName} is not a String. Please inform a valid user name.`); }
+
+} while (addNew === true)
