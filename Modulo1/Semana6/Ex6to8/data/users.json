@@ -1,22 +1,37 @@
 [
   {
     "id": 1,
-    "name": "Gabriel"
+    "name": "Gabriel",
+    "age": 29,
+    "position": "CEO",
+    "password":"123"
   },
   {
     "id": 2,
-    "name": "Mayara"
+    "name": "Mayara",
+    "age": 29,
+    "position": "VP",
+    "password":"234"
   },
   {
     "id": 3,
-    "name": "Jack"
+    "name": "Jack",
+    "age": 17,
+    "position": "OP",
+    "password":"bark"
   },
   {
     "id": 4,
-    "name": "Scarpinha"
+    "name": "Scarpinha",
+    "age": 32,
+    "position": "Player",
+    "password":"trakinas"
   },
   {
     "id": 5,
-    "name": "Dudu"
+    "name": "Dudu",
+    "age": 34,
+    "position": "Captain",
+    "password":"777"
   }
 ]
