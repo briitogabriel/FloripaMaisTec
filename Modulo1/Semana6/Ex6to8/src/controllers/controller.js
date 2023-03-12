@@ -21,12 +21,20 @@ const getUserId = (req, res) => {
   }
 }
 
-const addUser = (req, res) => {
-  const newId = maxId+1;
-  const newUser = req.body;
+const validateLeader = (req, res, next) => {
+  if(req.body.position.toUpperCase() !== 'LEADER') {
+    res.status(400).json({message: `Not allowed. Only Leaders can add new users.`});
+  } else {
+    next();
+  }
+};
 
+const addUser = (req, res) => {
+  const newUser = req.body;
+  
   if(newUser.name.length > 0 && newUser.position.length > 0 && newUser.password.length > 0) {
     if(newUser.age >= 21) {
+      const newId = maxId+1;
       users.push({
         "id": newId,
         "name": newUser.name,
@@ -53,15 +61,12 @@ const addUser = (req, res) => {
   } else {
     res.status(406).json({message: `Missing data! Please inform a valid user, containing name, age, position and password.`});
   }
-}
+};
 
 const deleteUser = (req, res) => {
-  const idRequest = parseInt(req.params.id);
-
-  console.log(idRequest);
-  console.log(idRequest.length);
+  const idRequest = parseInt(req.params.id) || null;
   
-  if(idRequest > 0) {
+  if(idRequest > 0 || idRequest != null) {
     const userFound = users.find(user => (
       user.id === idRequest
     ));
@@ -76,13 +81,14 @@ const deleteUser = (req, res) => {
       res.status(400).json({message: `User ID not found.`});
     }
   } else {
-    res.status(406).json({message: `Missing data! Please inform a user ID.`});
+    res.status(406).json({message: `Please inform a user ID.`});
   }
 }
 
 module.exports = {
   getUserId,
   getAllUsers,
+  validateLeader,
   addUser,
   deleteUser
 }
