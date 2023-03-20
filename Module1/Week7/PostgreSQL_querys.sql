@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS pedido (
 		REFERENCES cliente(id_cliente)
 );
 
+
 -- [M01S07] Exercise 03 - ALTER
 
 ALTER TABLE cliente
@@ -37,10 +38,12 @@ ALTER TABLE cliente
 ALTER TABLE pedido
 	ADD COLUMN data_pedido DATE NOT NULL;
 
+
 -- REGULAR QUERY ONLY FOR VISUALIZATIONS
 
 SELECT * FROM cliente
 LEFT JOIN pedido ON id_pedido_cliente = id_cliente;
+
 
 -- [M01S07] Exercise 04 - DROP
 
@@ -49,3 +52,69 @@ CREATE TABLE teste (
 	campo1 VARCHAR(10)
 );
 DROP TABLE teste;
+
+
+-- INSERTING DATA EXAMPLES
+
+INSERT INTO produto(descricao) VALUES('Caneta Azul');
+INSERT INTO produto(descricao) VALUES('Lápis Verde');
+SELECT * FROM produto;
+
+INSERT INTO cliente(
+	nome,
+	sobrenome,
+	cpf,
+	email,
+	rg
+) VALUES(
+	'Gabriel',
+	'Brito',
+	'12345678910',
+	'gabriel@email.com',
+	'987654321'
+);
+INSERT INTO cliente(
+	nome,
+	sobrenome,
+	cpf,
+	email,
+	rg
+) VALUES(
+	'Fulaninho',
+	'Batista',
+	'55522214632',
+	'fulano@email.com',
+	'852169853'
+);
+SELECT * FROM cliente;
+
+INSERT INTO pedido(id_pedido_cliente, data_pedido) VALUES(
+	1,
+	'20/03/2023'
+);
+INSERT INTO pedido(id_pedido_cliente, data_pedido) VALUES(
+	1,
+	'01/01/2023'
+);
+INSERT INTO pedido(id_pedido_cliente, data_pedido) VALUES(
+	2,
+	'15/12/2022'
+);
+SELECT * FROM pedido;
+
+
+-- UPDATE DATA EXAMPLES
+
+UPDATE public.pedido
+	SET id_pedido_cliente=1, data_pedido='02/01/2023'
+	WHERE id_pedido=2;
+UPDATE public.pedido
+	SET id_pedido_cliente=2
+	WHERE id_pedido=2;
+
+
+-- DELETE DATA EXAMPLES
+	
+DELETE FROM public.pedido
+	WHERE id_pedido=2;
+SELECT * FROM pedido;
