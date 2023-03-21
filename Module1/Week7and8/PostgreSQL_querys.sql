@@ -118,3 +118,7 @@ UPDATE public.pedido
 DELETE FROM public.pedido
 	WHERE id_pedido=2;
 SELECT * FROM pedido;
+
+
+-- DROP COLUMN EXAMPLE:
+-- ALTER TABLE tableName DROP COLUMN columnName

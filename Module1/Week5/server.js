@@ -3,7 +3,7 @@
 const readline = require('readline-sync');  // -> GET USER INPUTS IN ALL EXERCISES
 
 
-let exerciseOption = readline.question(`\nWhat exercise number would you like to run? (press 'N' to quit)\n`);
+let exerciseOption = readline.question(`\nFrom 1 to 5, which exercise would you like to run? (press 'N' to quit)\n`);
 
 do {
   switch (parseInt(exerciseOption)){
@@ -97,7 +97,7 @@ do {
       const under18 = [];
       const equalAbove18 = [];
 
-      console.log(`Original user list: ${userList04}`);
+      console.log(`Original user list: ${JSON.stringify(userList04)}`);
 
       userList04.map(user => {
         user.idade < 18 ? under18.push(JSON.stringify(user)) : equalAbove18.push(JSON.stringify(user))
@@ -129,5 +129,5 @@ do {
     default: console.log('Exercise not found.')
   }
 
-  exerciseOption = readline.question(`\nWhat exercise number would you like to run now? (press 'N' to quit)\n`)
+  exerciseOption = readline.question(`\nFrom 1 to 5, which exercise would you like to run now? (press 'N' to quit)\n`)
 } while (exerciseOption.toUpperCase() !== 'N')
