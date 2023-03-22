@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const users = require('../../data/users.json');
 const idList = users.map(user => user.id);
 let maxId = Math.max(...idList)

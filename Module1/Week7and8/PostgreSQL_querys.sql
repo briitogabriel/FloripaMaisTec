@@ -37,7 +37,16 @@ ALTER TABLE cliente
 	
 ALTER TABLE pedido
 	ADD COLUMN data_pedido DATE NOT NULL;
-
+	
+ALTER TABLE produto
+	ADD COLUMN preco DECIMAL(8,2);
+ALTER TABLE produto
+	ADD COLUMN "comissao_5%" DECIMAL(8,2);
+	
+ALTER TABLE produto
+	ALTER COLUMN "comissao_5%" TYPE MONEY;
+ALTER TABLE produto
+	ALTER COLUMN preco TYPE MONEY;
 
 -- REGULAR QUERY ONLY FOR VISUALIZATIONS
 
@@ -58,7 +67,6 @@ DROP TABLE teste;
 
 INSERT INTO produto(descricao) VALUES('Caneta Azul');
 INSERT INTO produto(descricao) VALUES('Lápis Verde');
-SELECT * FROM produto;
 
 INSERT INTO cliente(
 	nome,
@@ -86,7 +94,6 @@ INSERT INTO cliente(
 	'fulano@email.com',
 	'852169853'
 );
-SELECT * FROM cliente;
 
 INSERT INTO pedido(id_pedido_cliente, data_pedido) VALUES(
 	1,
@@ -100,7 +107,6 @@ INSERT INTO pedido(id_pedido_cliente, data_pedido) VALUES(
 	2,
 	'15/12/2022'
 );
-SELECT * FROM pedido;
 
 
 -- UPDATE DATA EXAMPLES
@@ -111,13 +117,40 @@ UPDATE public.pedido
 UPDATE public.pedido
 	SET id_pedido_cliente=2
 	WHERE id_pedido=2;
+	
+UPDATE public.produto
+	SET preco=10.5
+	WHERE id_produto=1;
+UPDATE public.produto
+	SET preco=200
+	WHERE id_produto=2;
+	
+UPDATE public.produto
+	SET "comissao_5%"=preco*0.05;
 
 
 -- DELETE DATA EXAMPLES
 	
 DELETE FROM public.pedido
 	WHERE id_pedido=2;
+
+
+-- SELECT QUERIES
+SELECT * FROM produto;
 SELECT * FROM pedido;
+SELECT * FROM cliente;
+
+SELECT nome FROM cliente WHERE nome LIKE 'G%';	--> WILDCARD TO MATCH EVERY CHARACTER
+SELECT nome FROM cliente WHERE nome LIKE 'g%';	--> POSTGRESQL IS CASE SENSITIVE
+SELECT nome FROM cliente WHERE nome LIKE '_a%';	--> WILDCARD TO MATCH ONE CHARACTER
+SELECT nome as "Client Name", email as "E-mail" FROM cliente WHERE nome LIKE '_a%' AND email like '%email%';
+SELECT nome, sobrenome FROM cliente ORDER BY nome ASC;
+SELECT * FROM produto WHERE descricao IS NULL;
+SELECT * FROM cliente WHERE NOT(nome='Gabriel' AND cpf LIKE '12%');	--> NOT SENTENCE: DENIES 'AND' (NOT 'AND' = 'OR')
+-- THE ABOVE QUERY RETURNS DATA WHERE "nome<>'Gabriel' OR cpf NOT LIKE '12%'"
+SELECT UPPER(nome), LOWER(sobrenome) FROM cliente;
+SELECT UPPER(SUBSTRING(nome, 1,3)) as SUBNome, nome FROM cliente;
+SELECT nome, LENGTH(nome) as comprimento FROM cliente;
 
 
 -- DROP COLUMN EXAMPLE:
