@@ -1,7 +1,5 @@
 const { Sequelize } = require('sequelize');
 const connection = require('../database');
-connection.authenticate();
-console.log('Connection made.');
 
 const Task = connection.define('tasks', {
   
@@ -20,4 +18,6 @@ const Task = connection.define('tasks', {
   description: {
     type: Sequelize.STRING,
   }
-})
+});
+
+module.exports = Task;
