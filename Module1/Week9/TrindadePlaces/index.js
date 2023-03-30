@@ -40,4 +40,23 @@ app.get('/places', async (_, res) => {
   const getAllPlaces = await Place.findAll();
   res.status(200).json(getAllPlaces);
   console.log(`${Date()} -> All places requested`)
-})
+});
+
+app.delete('/places/:id', async (req, res) => {
+  const deleteId = req.params.id;
+  const findPlaceId = await Place.findByPk(deleteId);
+
+  if (findPlaceId) {
+    res.status(200).json({
+      success: `Place ID ${deleteId} was deleted`
+    });
+    await findPlaceId.destroy();
+
+  } else {
+    res.status(404).json({
+      error: `Place ID ${deleteId} was not found.`
+    });
+  }
+
+  console.log(`${Date()} -> Place ID ${deleteId} deleted`)
+});
