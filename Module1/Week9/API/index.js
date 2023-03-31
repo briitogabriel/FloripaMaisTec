@@ -23,9 +23,14 @@ app.post('/tasks', async (req, res) => {
     name: req.body.name,
     description: req.body.description
   };
-  
+
+  if (!newTask.name) {
+    return res.status(400).json({error: "Name is mandatory."});
+  }
+
   const postTask = await Task.create(newTask);
   res.status(201).json(postTask);
+  
 })
 
 app.get('/tasks', async (_, res) => {
