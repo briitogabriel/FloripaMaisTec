@@ -33,8 +33,12 @@ app.post('/tasks', async (req, res) => {
   
     if (!newTask.name) {
       return res.status(400).json({error: "Name is mandatory."});
-    // } else if (VALIDAR SE O NOME JÁ EXISTE) {
-    //   return
+    } else {
+
+      const findTaskName = await Task.findOne({ where: {name: newTask.name} })
+      if (findTaskName) {
+        return res.status(401).json({error: `Task '${newTask.name}' already exists.`});
+      }
     }
   
     const postTask = await Task.create(newTask);
