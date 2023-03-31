@@ -101,4 +101,16 @@ Create a file ".env" into the root directory and set the variables USERNAME_PG a
 ```
 
 Navigate through routes on your backend interface:
-- GET/        => Root of your Application
+- GET/                => Root of your Application
+- POST/places         => Insert a new Place
+- GET/places          => Get all Places registered
+- DELETE/places/:id   => Delete a single Place by ID (query params)
+- PUT/places/:id      => Update informations (JSON body) of a Place found by ID (query params)
+
+Mandatory fields for a Place (insert this into your backend structure):
+- name: "Place name" (STRING)
+- telephone: "Telephone number with zone code" (STRING)
+- openingHours: "Opening hours of the Place" (STRING)
+- description: "Description of the services offered or other details"
+- latitude: "Place's latitude" (DECIMAL on format '-+XXX.XXXX')
+- longitude: "Place's longitude" (DECIMAL on format '-+XXX.XXXX')
