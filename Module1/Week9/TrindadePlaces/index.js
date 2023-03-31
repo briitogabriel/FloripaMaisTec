@@ -31,6 +31,9 @@ app.post('/places', async (req, res) => {
 	  longitude: req.body.longitude
   }
 
+  if(!newPlace.name || !newPlace.telephone || !newPlace.openingHours || !newPlace.description || !newPlace.latitude || !newPlace.longitude) {
+    return res.status(400).json({error: "All fields are mandatory."});  
+  }
   const postNewPlace = await Place.create(newPlace);
   res.status(201).json(postNewPlace);
   console.log(`${Date()} -> New place inserted into table`)
@@ -44,19 +47,55 @@ app.get('/places', async (_, res) => {
 
 app.delete('/places/:id', async (req, res) => {
   const deleteId = req.params.id;
-  const findPlaceId = await Place.findByPk(deleteId);
+  const placeFound = await Place.findByPk(deleteId);
 
-  if (findPlaceId) {
+  if (!placeFound) {
+    return res.status(404).json({
+      error: `Place ID ${deleteId} was not found.`
+    });
+    
+  }
     res.status(200).json({
       success: `Place ID ${deleteId} was deleted`
     });
-    await findPlaceId.destroy();
-
-  } else {
-    res.status(404).json({
-      error: `Place ID ${deleteId} was not found.`
-    });
-  }
+    await placeFound.destroy();
 
   console.log(`${Date()} -> Place ID ${deleteId} deleted`)
+});
+
+app.put('/places/:id', async (req, res) => {
+  const updateId = req.params.id;
+  const updatedPlace = {
+    name: req.body.name,
+    telephone: req.body.telephone,
+	  openingHours: req.body.openingHours,
+	  description: req.body.description,
+	  latitude: req.body.latitude,
+	  longitude: req.body.longitude
+  }
+  
+  const placeFound = await Place.findByPk(updateId);
+
+  if (!placeFound) {
+    return res.status(404).json({
+      error: `Place ID ${updateId} was not found.`
+    });
+
+  } else if(!updatedPlace.name || !updatedPlace.telephone || !updatedPlace.openingHours || !updatedPlace.description || !updatedPlace.latitude || !updatedPlace.longitude) {
+    return res.status(400).json({error: "All fields are mandatory."});  
+  }
+
+  placeFound.set({
+    name: updatedPlace.name,
+    telephone: updatedPlace.telephone,
+	  openingHours: updatedPlace.openingHours,
+	  description: updatedPlace.description,
+	  latitude: updatedPlace.latitude,
+	  longitude: updatedPlace.longitude
+  });
+
+  await placeFound.save();
+  res.status(200).json(placeFound);
+  
+  console.log(`${Date()} -> Place ID ${updateId} updated`)
 });
