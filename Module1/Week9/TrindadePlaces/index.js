@@ -55,7 +55,7 @@ app.delete('/places/:id', async (req, res) => {
     });
     
   }
-    res.status(200).json({
+    res.status(204).json({
       success: `Place ID ${deleteId} was deleted`
     });
     await placeFound.destroy();
