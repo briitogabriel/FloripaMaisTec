@@ -61,4 +61,44 @@ app.get('/tasks', async (_, res) => {
   }
 });
 
+app.delete('/tasks/:id', async (req, res) => {
+  try {
+    await Task.destroy({ where: {id: req.params.id} });
+    res.status(204).json();
+    
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({error: 'Could not process your request'});
+  }
+});
+
+app.put('/tasks/:id', async (req, res) => {
+  const updateId = req.params.id;
+  const updatedTask = {
+    name: req.body.name,
+    description: req.body.description
+  }
+  
+  const taskFound = await Task.findByPk(updateId);
+
+  if (!taskFound) {
+    return res.status(404).json({
+      error: `Task ID ${updateId} was not found.`
+    });
+
+  } else if(!updatedTask.name) {
+    return res.status(400).json({error: "Name field is mandatory."});  
+  }
+
+  taskFound.set({
+    name: updatedTask.name,
+	  description: updatedTask.description
+  });
+
+  await taskFound.save();
+  res.status(200).json(taskFound);
+  
+  console.log(`${Date()} -> Task ID ${updateId} updated`)
+});
+
 app.listen(3000, () => console.log('App listening on port 3000'))
