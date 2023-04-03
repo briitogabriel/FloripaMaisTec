@@ -3,7 +3,7 @@
 </div>
 <div>
   <h4>About</h4>
-  <p><b>Floripa MaisTec</b> project is a dev selection program created by Florianópolis City Hall in partnsership with SENAI, SEBRAE, ACATE and other companies.</p>
+  <p><b>Floripa MaisTec</b> project is a dev selection program created by Florianópolis City Hall in partnership with SENAI, SEBRAE, ACATE and other companies.</p>
   <p>This is a practical iniciative called Lab365, with the objective to prepare proffessionals to the technology field by developing real life projects and be mentored by senior teachers during 9 months and over 900 hours.</p>
 </div>
 
@@ -20,5 +20,5 @@
 </div>
 
 <div>
-  <h4>Feel free and explore the nested repositories to know more about each item.</h4>
+  <h4>Feel free and explore the nested folders to know more about each item.</h4>
 </div>

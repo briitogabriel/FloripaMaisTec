@@ -85,7 +85,7 @@ Clone
 Access project's directory
 
 ```bash
-  cd Module1/Week9/TrindadePlaces
+  cd Module1/Week9and10/TrindadePlaces
 ```
 
 Install dependencies

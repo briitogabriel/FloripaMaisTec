@@ -23,7 +23,7 @@ Clone
 Access project's directory
 
 ```bash
-  cd Module1/Week9/API
+  cd Module1/Week9and10/API
 ```
 
 Install dependencies
@@ -39,6 +39,8 @@ Create a file ".env" into the root directory and set the variables USERNAME_PG a
 ```
 
 Navigate through routes on your backend interface:
-- GET/        => Root of your Application
-- POST/tasks  => Post/store a new task into the database
-- GET/tasks   => Get all tasks stored into the database
+- GET/              => Root of your Application
+- POST/tasks        => Post/store a new task into the database
+- GET/tasks         => Get all tasks stored into the database
+- DELETE/tasks/:id  => Update a task stored in database
+- PUT/tasks/:id     => Update a task stored in database
