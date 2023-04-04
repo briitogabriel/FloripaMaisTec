@@ -21,7 +21,8 @@ const User = connection.define('users', {
 
   cpf: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
 
   password: {

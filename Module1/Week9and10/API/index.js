@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+const bcrypt = require('bcrypt');
 
 const connection = require('./src/database/index')
 const Task = require('./src/models/task');
@@ -107,15 +108,26 @@ app.put('/tasks/:id', async (req, res) => {
 app.post('/users', async (req, res) => {
   try {
     const { name, cpf, password } = req.body;
-    
-    if (!name || !cpf || !password) {
-      return res.status(400).json({error: "Name, CPF and Password are mandatory."});
-    }
+    const hash = await bcrypt.hash(password, 10)  // (VAR, SaltRounds) -> security level x processing
 
+    cpf_numb = cpf.replace(/\D/g,'')
+    
+    const userInDatabase = await User.findOne({ where: {
+      cpf: cpf
+    }});
+    
+    if (!name || !cpf_numb || !password) {
+      return res.status(400).json({error: "Name, CPF and Password are mandatory."});
+    } else
+      
+      if (userInDatabase) {
+        return res.status(403).json({error: `CPF ${cpf_numb} already exists in database.`});
+    }
+    
     const newUser = {
       name,
-      cpf,
-      password
+      cpf: cpf_numb,
+      password: hash
     };
 
     const user = await User.create(newUser);
