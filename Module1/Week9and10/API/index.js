@@ -2,13 +2,12 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// const sequelize = require('sequelize');
-
 const connection = require('./src/database/index')
 const Task = require('./src/models/task');
+const User = require('./src/models/user');
 
 connection.authenticate()
-connection.sync();
+connection.sync({alter: true});   //"alter: true" forces change of datatype into database
 console.log('Connection established.');
 
 app.get('/', (_, res) => {
@@ -50,6 +49,7 @@ app.post('/tasks', async (req, res) => {
   }
 });
 
+
 app.get('/tasks', async (_, res) => {
   try {
     const getTasks = await Task.findAll();
@@ -61,6 +61,7 @@ app.get('/tasks', async (_, res) => {
   }
 });
 
+
 app.delete('/tasks/:id', async (req, res) => {
   try {
     await Task.destroy({ where: {id: req.params.id} });
@@ -71,6 +72,7 @@ app.delete('/tasks/:id', async (req, res) => {
     res.status(500).json({error: 'Could not process your request'});
   }
 });
+
 
 app.put('/tasks/:id', async (req, res) => {
   const updateId = req.params.id;
@@ -100,5 +102,29 @@ app.put('/tasks/:id', async (req, res) => {
   
   console.log(`${Date()} -> Task ID ${updateId} updated`)
 });
+
+
+app.post('/users', async (req, res) => {
+  try {
+    const { name, cpf, password } = req.body;
+    
+    if (!name || !cpf || !password) {
+      return res.status(400).json({error: "Name, CPF and Password are mandatory."});
+    }
+
+    const newUser = {
+      name,
+      cpf,
+      password
+    };
+
+    const user = await User.create(newUser);
+    res.status(201).json({user});
+
+  } catch (error) {
+    res.status(500).json({error: 'Could not process your request'});
+  }
+});
+
 
 app.listen(3000, () => console.log('App listening on port 3000'))
