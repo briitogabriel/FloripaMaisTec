@@ -40,7 +40,9 @@ Create a file ".env" into the root directory and set the variables USERNAME_PG a
 
 Navigate through routes on your backend interface:
 - GET/              => Root of your Application
-- POST/tasks        => Post/store a new task into the database
+- POST/tasks        => Create a new task
 - GET/tasks         => Get all tasks stored into the database
 - DELETE/tasks/:id  => Update a task stored in database
 - PUT/tasks/:id     => Update a task stored in database
+- POST/users        => Create a new user
+- POST/users/login  => User login
