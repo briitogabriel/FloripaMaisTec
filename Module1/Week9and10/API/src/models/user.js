@@ -41,4 +41,12 @@ const User = connection.define('users', {
   // },
 });
 
+// ----------> EXAMPLE OF SEQUELIZE HOOK TO ENCRYPT THE PASSWORD THROUGH MODEL (substitute the route validantion)
+// User.beforeSave(async (user) => {
+//   if (user.changed('password')) {
+//     const hashedPassword = await bcrypt.hash(user.password, 10);
+//     user.password = hashedPassword;
+//   }
+// });
+
 module.exports = User;
