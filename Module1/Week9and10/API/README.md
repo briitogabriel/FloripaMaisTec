@@ -7,6 +7,12 @@ ToDo List with tasks and descriptions.
 
 NOTE: These examples were guided for the entire classroom as a review of the Week 8
 
+## Week 10 - API with Express - Users routes
+
+### Class notes and guided instructions for examples purpose
+
+Adding users routes into our To Do List.
+
 ## Stack
 
 #### PostgreSQL, SQL, Express, ORM Sequelize
