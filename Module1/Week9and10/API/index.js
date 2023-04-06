@@ -7,11 +7,16 @@ const connection = require('./src/database/index')
 const Task = require('./src/models/task');
 const User = require('./src/models/user');
 
+const log = require('./src/middlewares/log');   // GLOBAL MIDDLEWARE
+const validateNewUser = require('./src/middlewares/validate-new-user');   // LOCAL MIDDLEWARE (POST/user route)
+const validateToken = require('./src/middlewares/validate-token');
+
 connection.authenticate()
 connection.sync({alter: true});   //"alter: true" forces change of datatype into database
 console.log('Connection established.');
 
 app.use(express.json());
+app.use(log); // CASE OF USE -> Global Middleware (!! always has to come after app.use(express.json()) in code order !!)
 
 app.get('/', (_, res) => {
   try {
@@ -53,7 +58,7 @@ app.post('/tasks', async (req, res) => {
 });
 
 
-app.get('/tasks', async (_, res) => {
+app.get('/tasks', validateToken, async (_, res) => {
   try {
     const getTasks = await Task.findAll();
     res.status(200).json(getTasks);
@@ -107,7 +112,7 @@ app.put('/tasks/:id', async (req, res) => {
 });
 
 
-app.post('/users', async (req, res) => {
+app.post('/users', validateNewUser, async (req, res) => {
   try {
     const { name, cpf, password } = req.body;
     const hash = await bcrypt.hash(password, 10)  // (VAR, SaltRounds) -> security level x processing
@@ -123,7 +128,7 @@ app.post('/users', async (req, res) => {
     } else
       
       if (userInDatabase) {
-        return res.status(403).json({error: `Wrong credentials.`}); //Should not return aditional information to others
+        return res.status(403).json({error: `User ${cpf_numb} already exists.`}); //Should not return aditional information to others
     }
     
     const newUser = {
@@ -143,6 +148,7 @@ app.post('/users', async (req, res) => {
     }});
 
   } catch (error) {
+    console.log(error)
     res.status(500).json({error: 'Could not process your request'});
   }
 });
@@ -166,7 +172,7 @@ app.post('/users/login', async (req, res) => {
     const token = jwt.sign(
       { id: userInDatabase.id },  // INFORMATION TO BE ENCRYPTED
       'SECRET_KEY',               // SECRET_KEY (example only in this exercise -> should use something specific and not obvious, through .ENV)
-      { expiresIn: '1h' /*, algorithm: 'ES256' -> PADRÃO DE ALGORITMO USADO NA LIB */ }         // EXPIRATION TIMER
+      { expiresIn: '1m' /*, algorithm: 'ES256' -> PADRÃO DE ALGORITMO USADO NA LIB */ }         // EXPIRATION TIMER = 1 minute
     );
   
     res.status(200).json({message: `User ${userInDatabase.name} logged in!`, token: token})
