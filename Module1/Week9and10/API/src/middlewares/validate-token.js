@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config({ path: './.env' });
 
 function validateToken(req, res, next) {
   try {
@@ -10,7 +11,7 @@ function validateToken(req, res, next) {
     }
 
     const tokenJWT = token.slice(7);  //remove "Bearer " from the req content
-    jwt.verify(tokenJWT, 'SECRET_KEY', (err, tokenContent) => {
+    jwt.verify(tokenJWT, process.env.TOKEN_KEY, (err, tokenContent) => {
       if (err) {
         if (err.name === 'TokenExpiredError') {
           return res.status(403).json({ message: 'Expired token' })

@@ -2,6 +2,8 @@ const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+require('dotenv').config({ path: './.env' });
+
 async function createLogin (req, res) {
   try {
     const userInDatabase = await User.findOne({where:{
