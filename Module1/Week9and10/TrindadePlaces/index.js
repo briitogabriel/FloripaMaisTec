@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 require('dotenv').config({ path: './.env' });
 
-const connection = require('./src/database/index')
+const connection = require('./src/database/index');
+
+const validateToken = require('./src/middlewares/validate-token');
 
 const updatePlace = require('./src/controllers/places/updatePlace');
 const deletePlace = require('./src/controllers/places/deletePlace');
@@ -30,12 +32,12 @@ app.get('/', (_, res) => {
   }
 });
 
-app.post('/places', createPlace);
-app.get('/places', findPlace);
-app.delete('/places/:id', deletePlace);
-app.put('/places/:id', updatePlace);
+app.post('/places', validateToken, createPlace);
+app.get('/places', validateToken, findPlace);
+app.delete('/places/:id', validateToken, deletePlace);
+app.put('/places/:id', validateToken, updatePlace);
 
-app.post('/users', createUser);
+app.post('/users', validateToken, createUser);
 app.post('/sessions', createSession);
 
 const PORT = process.env.PORT || 3333;
