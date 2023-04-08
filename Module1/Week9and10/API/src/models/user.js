@@ -14,11 +14,6 @@ const User = connection.define('users', {
     allowNull: false,
   },
 
-  // lastName: {
-  //   type: Sequelize.STRING,
-  //   allowNull: false
-  // },
-
   cpf: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -29,6 +24,11 @@ const User = connection.define('users', {
     type: Sequelize.STRING,
     allowNull: false
   }
+
+  // lastName: {
+  //   type: Sequelize.STRING,
+  //   allowNull: false
+  // },
 
   // email: {
   //   type: Sequelize.STRING,

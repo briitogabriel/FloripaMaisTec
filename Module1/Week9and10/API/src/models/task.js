@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const connection = require('../database');
+const User = require('./user');
 
 const Task = connection.define('tasks', {
   
@@ -17,7 +18,14 @@ const Task = connection.define('tasks', {
 
   description: {
     type: Sequelize.STRING,
+  },
+
+  user_id: {
+    type: Sequelize.INTEGER
   }
 });
+
+Task.belongsTo(User);
+// Task.belongsTo(User, {foreignKey: 'usuario_id'});    // ----- change the field name
 
 module.exports = Task;
