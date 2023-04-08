@@ -20,12 +20,14 @@ function validateToken(req, res, next) {
         return res.status(403).json({ message: 'Token error' })
         
       } else {
+        console.log(tokenContent);
+        req.body.userId = tokenContent.id;  // tokenContent.id comes from createLogin jwt.sign (authentication)
         next();
       }
     })
 
   } catch (error) {
-    
+    res.status(500).json({ message: error.message });
   }
 }
 

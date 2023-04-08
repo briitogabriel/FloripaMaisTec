@@ -3,7 +3,7 @@ const yup = require('yup');   // library for VALIDATIONS
 const validation = yup.object().shape({
   name: yup
     .string('Name must be a string')
-    .required('MID Name is mandatory'),   // VERIFY!!!!!! NOT WORKING!!!!!!!!!!!!!!
+    .required('Name is mandatory'),
   password: yup
     .string('Password must be a string')
     .min(8, 'Password must have at least 8 characteres')
