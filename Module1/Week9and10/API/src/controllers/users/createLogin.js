@@ -19,7 +19,7 @@ async function createLogin (req, res) {
 
     const token = jwt.sign(
       { id: userInDatabase.id },  // INFORMATION TO BE ENCRYPTED
-      'SECRET_KEY',               // SECRET_KEY (example only in this exercise -> should use something specific and not obvious, through .ENV)
+      process.env.TOKEN_KEY,      // SECRET_KEY (example only in this exercise -> should use something specific and not obvious, through .ENV)
       { expiresIn: '1h' /*, algorithm: 'ES256' -> PADRÃO DE ALGORITMO USADO NA LIB */ }         // EXPIRATION TIMER = 1 minute (m), 1 hour (h)
     );
   

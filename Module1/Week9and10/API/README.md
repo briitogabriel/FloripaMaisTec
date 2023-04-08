@@ -38,7 +38,7 @@ Install dependencies
   npm install
 ```
 
-Create a file ".env" into the root directory and set the variables USERNAME_PG and PASSWORD_PG according to your PostgreSQL database login
+Rename the file ".env-example" to ".env" (root directory) and set the variables according to your PostgreSQL database login and TOKEN configurations
 
 ```bash
   npm start
