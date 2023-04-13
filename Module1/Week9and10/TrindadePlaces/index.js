@@ -37,7 +37,7 @@ app.get('/places', validateToken, findPlace);
 app.delete('/places/:id', validateToken, deletePlace);
 app.put('/places/:id', validateToken, updatePlace);
 
-app.post('/users', validateToken, createUser);
+app.post('/users', validateToken, createUser);  //TOKEN passed by Bearer method (authentication into Insomnia)
 app.post('/sessions', createSession);
 
 const PORT = process.env.PORT || 3333;
