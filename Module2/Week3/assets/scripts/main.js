@@ -1,6 +1,6 @@
 // window.onload = document.getElementById('form').addEventListener('submit', login());
 
-function signIn(e) {
+const signIn = (e) => {
   e.preventDefault();
 
   let email = document.getElementById('email').value;
@@ -10,3 +10,6 @@ function signIn(e) {
 
   document.getElementById('form').reset();
 }
+
+let formData = document.getElementById('form');
+formData.addEventListener('submit', signIn);
