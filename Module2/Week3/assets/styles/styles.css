@@ -1,3 +1,13 @@
+
+/* @import 'CSSFILE.css'; */
+
+:root {
+  --color-green: #00A335;
+  --color-grey-1: #B4B6C1;
+  --color-grey-2: #F0F0F0;
+  --color-white: white;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +16,7 @@
 }
 
 body {
-  background-color: #F0F0F0
+  background-color: var(--color-grey-2)
 }
 
 .home {
@@ -22,7 +32,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--color-white);
   border-radius: 15px;
   margin: 2% 25%;
   padding: 3% 0 1.5% 0;
@@ -42,7 +52,7 @@ body {
 }
 
 input {
-  border: 1px solid #B4B6C1;
+  border: 1px solid var(--color-grey-1);
   padding: 1%;
   border-radius: 5px;
   margin: 2% 0;
@@ -70,29 +80,115 @@ input {
   height: 1.8rem;
 }
 
-h1, p {
+h1 {
   margin-bottom: 1rem;
 }
 
 p {
-  color: #B4B6C1;
+  color: var(--color-grey-1);
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 a {
-  color: #00A335;
+  color: var(--color-green);
   text-decoration: none;
 }
 
 .btn {
   /* font-weight: bold; */
-  color: white;
+  color: var(--color-white);
   height: 3rem;
   width: 82%;
   padding: 2% 0;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #00A335;
+  background-color: var(--color-green);
   margin: 8% 0;
+}
+
+@media (max-width: 992px) {
+  .formField {
+    width: 70%;
+    padding: 3%;
+    min-height: 70%;
+  }
+  
+  #form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 90%;
+  }
+  
+  input {
+    border: 1px solid var(--color-grey-1);
+    padding: 1%;
+    border-radius: 5px;
+    margin: 2% 0 2%;
+    height: 1.5rem;
+    width: 100%;
+    font-size: 70%;
+  }
+  
+  /* .inputField {
+  } */
+  
+  .inputGroup {
+    display: flex;
+    justify-content: space-between;
+    width: 102%;
+    margin: 2% 0px;
+  }
+  
+  .inputGroup div {
+    width: 48%;
+  }
+  
+  .inputGroup div input {
+    width: 98%;
+    margin: 0;
+    height: 1.8rem;
+  }
+  
+  h1, p {
+    margin-bottom: 2rem;
+  }
+  
+  p {
+    color: var(--color-grey-1);
+  }
+  
+  a {
+    color: var(--color-green);
+    text-decoration: none;
+  }
+  
+  .btn {
+    /* font-weight: bold; */
+    color: var(--color-white);
+    height: 3rem;
+    width: 102%;
+    padding: 2% 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--color-green);
+    margin: 8% 0;
+  }
+}
+
+
+
+@media (max-width: 1200px) {
+  .formField {
+    min-height: 70%;
+    width: 50%;
+  }
+
+  p {
+    font-size: .8rem;
+  }
 }
