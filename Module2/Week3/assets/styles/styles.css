@@ -60,9 +60,6 @@ input {
   width: 80%;
 }
 
-/* .inputField {
-} */
-
 .inputGroup {
   display: flex;
   justify-content: space-between;
@@ -96,7 +93,6 @@ a {
 }
 
 .btn {
-  /* font-weight: bold; */
   color: var(--color-white);
   height: 3rem;
   width: 82%;
@@ -115,68 +111,27 @@ a {
     min-height: 70%;
   }
   
-  #form {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    width: 90%;
-  }
-  
   input {
-    border: 1px solid var(--color-grey-1);
-    padding: 1%;
-    border-radius: 5px;
     margin: 2% 0 2%;
-    height: 1.5rem;
     width: 100%;
     font-size: 70%;
   }
   
-  /* .inputField {
-  } */
-  
   .inputGroup {
-    display: flex;
-    justify-content: space-between;
     width: 102%;
     margin: 2% 0px;
   }
   
-  .inputGroup div {
-    width: 48%;
-  }
-  
   .inputGroup div input {
     width: 98%;
-    margin: 0;
-    height: 1.8rem;
   }
   
   h1, p {
     margin-bottom: 2rem;
   }
   
-  p {
-    color: var(--color-grey-1);
-  }
-  
-  a {
-    color: var(--color-green);
-    text-decoration: none;
-  }
-  
   .btn {
-    /* font-weight: bold; */
-    color: var(--color-white);
-    height: 3rem;
     width: 102%;
-    padding: 2% 0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: var(--color-green);
-    margin: 8% 0;
   }
 }
 
