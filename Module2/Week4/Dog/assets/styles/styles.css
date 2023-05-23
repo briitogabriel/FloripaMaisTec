@@ -8,8 +8,145 @@
   font-family: sans-serif;
 }
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, p, body {
   margin: 0;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: white;
+  top: 0;
+}
+
+nav {
+  display: flex;
+  max-width: 50rem;
+  justify-content: space-between;
+  height: 4rem;
+  padding: 0 1rem;
+  align-items: center;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: #333
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+}
+
+.content__login {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+img {
+  max-width: 50vw;
+}
+
+.forms {
+  margin-top: 20vh;
+  width: 30%;
+}
+
+.title {
+  font-size: 3rem;  
+  margin: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.title::after {
+  content: ' ';
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--background-footer);
+  position: absolute;
+  border-radius: 0.2rem;
+  z-index: -1;
+  bottom: 5px;
+  left: -5px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.form-group input {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  background-color: #eee;
+  border: solid 2px #eee;
+  transition: 0.2s;
+}
+
+input:focus, input:hover {
+  outline: none;
+  border-color: var(--background-footer);
+  background-color: white;
+}
+
+button, .btn_register {
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: var(--background-footer);
+  color: var(--color_footer);
+  min-width: 8rem;
+  padding: 0.8rem 1.2rem;
+}
+
+.forgot_password {
+  display: inline-block;
+  color: #666;
+  padding: 0.5rem 0;
+  text-decoration: underline;
+}
+
+.register {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.register h2 {
+  font-size: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.register h2::after {
+  content: ' ';
+  display: block;
+  height: 0.5rem;
+  width: 3rem;
+  background-color: #ddd;
+  position: absolute;
+  border-radius: 0.2rem;
+  z-index: -1;
+  bottom: -5px;
+}
+
+.register p {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 footer {
