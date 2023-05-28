@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Bikcraft</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/styles/contact.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="./bikcraft.html"><img src="https://www.origamid.com/projetos/bikcraft/img/bikcraft.svg"></a>
+            <ul>
+                <li><a href="#">Bicicletas</a></li>
+                <li><a href="#">Seguros</a></li>
+                <li><a href="./contact.html">Contato</a></li>
+            </ul>
+        </header>
+
+        <div class="content p-t-80">
+            <div>
+                <h6 class="gray">RESPOSTAS EM ATÉ 24H</h6>
+                <h1>nosso contato<span class="text-yellow">.</span></h1>
+            </div>
+        </div>
+
+        <div class="form-board">
+                
+            <div class="contact-data col-5">
+                <h5>Loja Online</h5>
+
+                <div class="address-info">
+                    <p>Rua Ali Perto, 35</p>
+                    <p>Rio de Janeiro - RJ</p>
+                    <p>Brasil - Terra - Vita Láctea</p>
+                </div>
+
+                <div class="email-info">
+                    <a href="mailto:contato@bikcraft.com">contato@bikcraft.com</a>
+                    <a href="mailto:assistencia@bikcraft.com">assistencia@bikcraft.com</a>    
+                </div>
+                
+                <a href="http://api.whatsapp.com/send?phone=${552199999999}&text=${Olá,%20Bikcraft!}" class="phone-info">+55 21 9999-9999</a>
+            </div>
+
+            <div class="form-inputs col-7">
+                <form action="" id="form">
+  
+                    <div class="row">
+                        <fieldset class="col-6">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required aria-label="name">
+                        </fieldset>
+                        
+                        <fieldset class="col-6">
+                            <label for="phone">Telefone</label>
+                            <input type="phone" id="phone" name="phone" placeholder="(21) 9999-9999" required aria-label="número de telefone">
+                        </fieldset>
+                    </div>
+                    
+                    <fieldset>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="contato@email.com" required aria-label="endereço de email">
+                    </fieldset>
+                    
+                    <fieldset>
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" placeholder="O que você precisa?" aria-label="mensagem a ser enviada" rows="4" cols="50"></textarea>
+                    </fieldset>
+              
+                    <button class="btn col-6" type="submit" aria-label="botão enviar mensagem">Enviar mensagem</button>
+                </form>
+            </div>
+                
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+
+</html>

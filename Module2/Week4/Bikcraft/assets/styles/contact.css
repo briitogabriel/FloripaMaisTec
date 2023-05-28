@@ -1,0 +1,228 @@
+:root {
+  --black: #000;
+  --light-gray: #f7f7f7;
+  --dark-gray: #111111;
+  --text-1: #fff;
+  --text-2: #b2b2b2;
+  --btn-background-color-1: #FBB803;
+  --btn-background-hover-1: #dda201;
+  --btn-color-1: #000;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(var(--dark-gray) 600px, var(--light-gray) 0px);
+  margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6,span,p {
+  color: var(--text-1);
+}
+
+.gray {
+  color: var(--text-2);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+h1 {
+  margin-block-end: 0 !important;
+  margin-block-start: 0 !important;
+  font-size: 40px;
+}
+
+h6 {
+  font-size: 16px;
+  margin-block-start: 0 !important;
+  margin-top: 16px !important;
+  margin-bottom: 20px;
+  line-height: 22px;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+header {
+  background-color: var(--black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 120px;
+  width: 98vw;
+}
+
+ul {
+  display: flex;
+  margin: 0;
+  top: 17px;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+}
+
+li {
+  list-style-type: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-1);
+  position: relative;
+}
+
+/* Animando o sublinhado quando o mouse passa sobre a tag */
+li a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--text-1);
+  margin-top: 4px;
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+}
+
+li a:hover::after {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 70px 120px;
+}
+
+.p-t-80 {
+  padding-top: 80px;
+}
+
+.text-muted {
+  color: var(--text-2);
+}
+
+.form-board {
+  display: flex;
+  margin: 0 35px 35px 35px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-width: 80vw;
+}
+
+.contact-data {
+  background-color: var(--black);
+  padding: 50px;
+  color: var(--text-2);
+  border-radius: 5px 0 0 5px;
+}
+.contact-data p, .contact-data a {
+  color: var(--text-2);
+}
+.contact-data a:hover {
+  color: var(--text-1);
+}
+
+.contact-data h5 {
+  margin-bottom: 50px;
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 100;
+  color: var(--text-1);
+}
+
+.address-info {
+  background: url("https://www.origamid.com/projetos/bikcraft/img/icones/local.svg") no-repeat 0px 2px;
+  margin-bottom: 40px;
+  padding-left: 30px;
+}
+
+.email-info {
+  background: url("	https://www.origamid.com/projetos/bikcraft/img/icones/email.svg") no-repeat 0px 2px;
+  margin-bottom: 40px;
+  padding-left: 30px;
+}
+
+.email-info a {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.phone-info {
+  background: url("	https://www.origamid.com/projetos/bikcraft/img/icones/telefone.svg") no-repeat 0px 2px;
+  margin-bottom: 40px;
+  padding-left: 30px;
+}
+
+.form-inputs {
+  background-color: white;
+  padding: 50px;
+  color: var(--black);
+  border-radius: 0 5px 5px 0;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  margin: 5px 0;
+}
+
+input, textarea {
+  background-color: var(--light-gray);
+  border: 1px solid var(--text-2);
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+}
+input:hover, textarea:hover {
+  background-color: white;
+  border-color: var(--btn-background-color-1);
+  box-shadow: 0 0 0 2px #fea;
+}
+
+/* .btn {
+  background-color: transparent;
+  outline: 0;
+  padding: 5px 8px;
+  border: 2px solid #fb1;
+  border-radius: 6px;
+} */
+
+
+.btn {
+  background-color: var(--btn-background-color-1);
+  cursor: pointer;
+  color: var(--black);
+  margin-top: 15px;
+  height: 60px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.btn:hover {
+  background-color: var(--btn-background-hover-1);
+}
+
+.text-yellow {
+  color: var(--btn-background-color-1);
+}
