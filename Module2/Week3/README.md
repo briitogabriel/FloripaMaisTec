@@ -75,7 +75,7 @@ Clone
 Access project's directory
 
 ```bash
-  cd Module1/Week3
+  cd Module2/Week3
 ```
 
 Open the index.html file and interact with the forms
