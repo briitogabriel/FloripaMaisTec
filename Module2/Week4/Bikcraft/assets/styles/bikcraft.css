@@ -73,7 +73,19 @@ a {
 }
 
 /* Animando o sublinhado quando o mouse passa sobre a tag */
-a:hover::after {
+li a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--text-1);
+  margin-top: 4px;
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+}
+
+li a:hover::after {
   width: 100%;
 }
 
