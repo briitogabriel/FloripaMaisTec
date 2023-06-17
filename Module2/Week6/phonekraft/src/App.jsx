@@ -5,11 +5,11 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header brand='phonekraft' links={['Produtos', 'Contato']} />
     </>
   )
 }
 
 export default App
 
-// FIGMA -> https://www.figma.com/proto/xi5OcmFNlCPdE8ImQ5EdJR/Untitled?type=design&node-id=1-3&scaling=scale-down&page-id=0%3A1
+// FIGMA -> https://www.figma.com/file/xi5OcmFNlCPdE8ImQ5EdJR/PI-FSTrindade?type=design&node-id=102-791&t=A9Hh3EKuQt2LRRPc-0
