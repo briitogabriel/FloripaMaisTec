@@ -1,0 +1,29 @@
+kind: PersistentVolume # volume que persiste dados de forma perene
+apiVersion: v1
+metadata:
+  name: postgres-pv-volume
+  labels:
+    type: local
+    app: postgres
+spec:
+  storageClassName: manual # o nome é dado manualmente 
+  capacity:
+    storage: 5Gi # capacidade do volume
+  accessModes:
+    - ReadWriteMany # modelo de acesso, vários podem ler e vários podem escrever
+  hostPath:
+    path: "/mnt/data" #caminho do banco de dados dentro do Kubernetes
+---
+kind: PersistentVolumeClaim # Atribuindo o volume criado ao aplicativo postgres
+apiVersion: v1
+metadata:
+  name: postgres-pv-claim
+  labels:
+    app: postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi

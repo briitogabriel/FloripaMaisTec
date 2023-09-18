@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service # Controla o acesso ao postgres
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:
+    app: postgres
