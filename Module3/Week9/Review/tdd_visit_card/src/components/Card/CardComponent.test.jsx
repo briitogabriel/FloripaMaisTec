@@ -31,7 +31,7 @@ describe('Suite de testes no caso de sucesso', () => {
 
   it('Está exibindo o título do Card correto', () => {
     // render(<CardComponent />);
-    const titulo = screen.getByText(/Robert Santos/);
+    const titulo = screen.getByText(/Gabriel Brito/);
     expect(titulo).toBeInTheDocument();
   })
 });
