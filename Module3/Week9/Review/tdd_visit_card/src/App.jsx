@@ -1,8 +1,12 @@
+import { CardComponent } from "./components/Card/CardComponent"
+import { CounterComponent } from "./components/Counter/CounterComponent"
+
 function App() {
 
   return (
     <>
-      <h1>RENDER</h1>
+      <CardComponent />
+      <CounterComponent />
     </>
   )
 }
