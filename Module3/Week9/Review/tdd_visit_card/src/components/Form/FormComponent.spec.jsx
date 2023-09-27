@@ -27,7 +27,17 @@ describe('Suite de testes caso o formulário seja preenchido corretamente', () =
     expect(button).toBeInTheDocument()
   });
   it('Envio do formulário está sendo feito com sucesso', () => {
-    
+    const button = screen.getByText(/Enviar/)
+    const nameInput = screen.getByPlaceholderText('Digite seu nome')
+    const emailInput = screen.getByPlaceholderText('Digite seu e-mail')
+
+    fireEvent.input(nameInput, {target: {value: 'Teste'}})
+    fireEvent.input(emailInput, {target: {value: 'teste@email.com'}})
+
+    fireEvent.click(button)
+
+    const errorMessage = screen.queryByText('Campos não foram preenchidos')
+    expect(errorMessage).not.toBeInTheDocument();
   });
 });
 
@@ -58,15 +68,15 @@ describe('Suite de testes caso os campos do formulário não sejam preenchidos',
     expect(errorMessage).toBeInTheDocument();
   });
   it('Exibe um erro no email pois não foi preenchido', () => {
-    const emailInput = screen.getByPlaceholderText('Digite seu e-mail')
-    fireEvent.input(emailInput, {value: 'teste@email.com'})
-
+    const nameInput = screen.getByPlaceholderText('Digite seu nome')
+    fireEvent.input(nameInput, {target: {value: 'Teste'}})
+    
     const errorMessage = screen.getByText('Campos não foram preenchidos')
     expect(errorMessage).toBeInTheDocument();
   });
   it('Exibe um erro no nome pois não foi preenchido', () => {
-    const nameInput = screen.getByPlaceholderText('Digite seu nome')
-    fireEvent.input(nameInput, {value: 'Teste'})
+    const emailInput = screen.getByPlaceholderText('Digite seu e-mail')
+    fireEvent.input(emailInput, {target: {value: 'teste@email.com'}})
 
     const errorMessage = screen.getByText('Campos não foram preenchidos')
     expect(errorMessage).toBeInTheDocument();

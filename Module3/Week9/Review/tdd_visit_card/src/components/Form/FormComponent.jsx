@@ -9,12 +9,12 @@ export const FormComponent = () => {
 
   const handleInput = ({ target }) => {
     const { value, name } = target;
-    setData({ [name]: value, ...data })
+    setData({ ...data, [name]: value })
   }
 
   const submit = (e) => {
     e.preventDefault()
-    console.log(dat)
+    console.log(data)
   }
 
   return (
