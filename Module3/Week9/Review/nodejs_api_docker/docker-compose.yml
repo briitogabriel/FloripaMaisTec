@@ -1,0 +1,17 @@
+version: '1.0.0'  # Version of my compose file
+
+services:
+  app:
+    container_name: nodejs-v18.18.0   # Container name is personal
+    build: 
+      context: .
+      dockerfile: Dockerfile  # Redirect to Dockerfile
+    volumes:
+      - ./:/usr/src/app   # FROM computer root folder : TO same Dockerfile directory
+    environment:
+      - PORT=3000   # ENV VARIABLES for computer port, same port as shown bellow (replaces npm install dotenv)
+    ports:
+      - 3000:3000   # FIRST computer port : SECOND docker port
+
+# TO RUN: in the docker-compose file run command: "docker-compose up"
+# We can check Docker Desktop to see the container's lifecicle
