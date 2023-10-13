@@ -6,8 +6,8 @@ export const Header = () => {
 
   return (
     <header>
-      <Link to='/'>Home</Link>
-      <Link to='/todo'>New Task</Link>
+      <Link to="/">Home</Link>
+      <Link to="/todo">Cadastar Tarefa</Link>
 
       <h1>{user().email}</h1>
       <button>Sair</button>
